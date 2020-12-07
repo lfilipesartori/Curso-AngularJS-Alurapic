@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+ <html lang="pt-br" ng-app="alurapic"> <!--inicializando o módulo principal alurapic, passado no main.js -->
+    <head>
+        <meta charset="UTF-8">
+        <base href="/">  <!--substitui o uso de # por /-->
+        <meta name="viewport" content="width=device-width">
+        <title>Alurapic</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="css/efeitos.css">
+    </head>
+    <body> <!--diretiva ng-controller que associa o controller com as expression passadas na view, carregando a view com os dados passados | sem ela, dados serão passados por rotas-->
+        <div class="container">
+            <ng-view></ng-view> <!-- toda parcial carregada entrará no ng-view por meio de rotas-->
+        </div>    
+        
+        <script src="js/lib/angular.min.js"></script>
+        <script src="js/lib/angular-animate.min.js"></script>
+        <script src="js/lib/angular-route.min.js"></script>
+        <script src="js/lib/angular-resource.min.js"></script>
+        <script src="js/main.js"></script>
+        <script src="js/controllers/fotos-controller.js"></script>
+        <script src="js/controllers/foto-controller.js"></script>
+        <script src="js/controllers/grupos-controller.js"></script>
+        <script src="js/directives/minhas-diretivas.js"></script>
+        <script src="js/services/meus-servicos.js"></script>
+    </body>
+</html>

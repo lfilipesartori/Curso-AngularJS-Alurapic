@@ -1,0 +1,30 @@
+<div class="jumbotron"> <!--classe do bootstrap para dar destaque ao titulo-->
+    <h1 class="text-center">Alurapic</h1>
+</div>
+<p class="alert alert-info" ng-show="mensagem.length"> <!--mensagem só será exibida se o tamanho for diferente de 0, no caso, false, numero diferentes de zero são avaliados como true-->
+    {{mensagem}}
+</p>
+<div class="row"> <!--classe do bootstrap que deixa em linha-->
+    <div class="col-md-12"> <!--conteudo dentro da coluna será de 12 posições, bootstrap trabalha com 12 posições, ou seja, vai ocupar a linha(row) inteira-->
+        <form>     <!-- ng-model procura no $scope a propriedade filtro, e atualiza instantaniamente o filtro a medida que é digitado no input -->
+            <div class="input-group"> <!--agrupa a tag <a> e a deixa ao lado de <input>-->
+               
+                <span class="input-group-btn"> <!--agrupa a tag <a> e a deixa com cara de botão-->   
+                    <a href="fotos/new" class="btn btn-primary">Nova foto</a> <!-- cria uma botão com o link para fotos/new para adicionar uma nova foto -->
+                </span>
+               
+                <input ng-model="filtro" class="form-control" placeholder="filtrar"> <!--input usado para filtrar fotos por nome-->
+            </div>
+        </form>
+    </div> <!--fim col-md-12-->
+</div> <!--fim row-->
+
+<div class="row"> <!--aqui ficará a lista, em cima o filtro. O comando "|" é usado para filtrar e o filter diz que quer filtrar pelo valor passado em ng-model-->
+    <meu-painel class="col-md-2 painel-animado" ng-repeat="foto in fotos | filter: filtro" titulo="{{foto.titulo}}">  <!-- redução e simplificação do código usando uma diretiva criada como tag meu-painel, assim facilitando futuros paines criados no html -->
+        <minha-foto url="{{foto.url}}" titulo="{{foto.titulo}}"></minha-foto>           <!--duas lacunas angular expression onde por meio de um controller, é fornecido os dados as views-->
+        <a href="fotos/edit/{{foto._id}}" class="btn btn-primary btn-block">Editar</a>     <!--adiciona botões de remover e editar as fotos-->
+        <!-- <button class="btn btn-danger btn-block" ng-click="remover(foto)">Remover</button> -->
+		<meu-botao-perigo nome="Remover" acao="remover(foto)">
+        </meu-botao-perigo>
+    </meu-painel> 
+</div>
